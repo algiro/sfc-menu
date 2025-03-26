@@ -1,0 +1,12 @@
+# docker-compose.yml
+services:
+  react-menu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    volumes:
+      - ./src:/app/src
+    environment:
+      - NODE_ENV=production
