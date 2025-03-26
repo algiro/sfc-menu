@@ -6,12 +6,9 @@ import '../styles/menu.css';
 const CafeMenu = () => {
   return (
     <div
-      className="min-h-screen p-8 text-amber-400"
+      className="min-h-screen p-8 text-amber-400 menu-container centered-div"
       style={{
-        backgroundColor: '#0A6275',
-        backgroundImage: `url(${bebidaImg})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "right top",
+        '--bg-image': `url(${bebidaImg})`,
         backgroundSize: '400px', // default size for large screens
         '@media (max-width: 768px)': {
           backgroundSize: '200px', // medium screens
@@ -19,10 +16,11 @@ const CafeMenu = () => {
         '@media (max-width: 480px)': {
           backgroundSize: '120px', // small screens
         }
+
       }}
     >
       <div className="max-w-2xl mx-auto">
-        <h1>BEBIDAS</h1>
+        <h1 className='section-title'>BEBIDAS</h1>
         <div className="mb-8">
           <ul className="space-y-4">
             {bebidas

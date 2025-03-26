@@ -6,7 +6,7 @@ import '../styles/menu.css';
 const CafeMenu = () => {
   return (
     <div
-      className="min-h-screen p-8 text-amber-400"
+      className="min-h-screen p-8 text-amber-400 menu-container centered-div"
       style={{
         backgroundColor: '#0A6275',
         backgroundImage: `url(${cafeGrande})`,
@@ -22,7 +22,7 @@ const CafeMenu = () => {
       }}
     >
       <div className="max-w-2xl mx-auto">
-        <h1>CAFÈ</h1>
+        <h1 className='section-title'>CAFÈ</h1>
         <div className="mb-8">
           <ul className="space-y-4">
             {cafes

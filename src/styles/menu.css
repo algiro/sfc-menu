@@ -7,8 +7,9 @@
 
 /* Apply the font to specific elements */
 .menu-container {
-  font-family: 'CardenioModern', sans-serif; /* Include fallback font */
-  min-height: 100vh;
+  font-family: 'CardenioModern', sans-serif;
+  max-width: 800px;
+  /* Include fallback font */
   padding: 2rem;
   color: #FFB74D;
   background-color: #0A6275;
@@ -33,4 +34,14 @@
 
 h1 {
   font-family: 'CardenioModern', sans-serif;
+}
+
+.centered-div {
+  margin: 0 auto;
+  width: auto;
+}
+
+.filler-div {
+  margin: 20px 0;
+  width: 100%;
 }
