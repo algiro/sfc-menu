@@ -8,17 +8,7 @@ const CafeMenu = () => {
     <div
       className="min-h-screen p-8 text-amber-400 menu-container centered-div"
       style={{
-        backgroundColor: '#0A6275',
-        backgroundImage: `url(${cafeGrande})`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "right top",
-        backgroundSize: '400px', // default size for large screens
-        '@media (max-width: 768px)': {
-          backgroundSize: '200px', // medium screens
-        },
-        '@media (max-width: 480px)': {
-          backgroundSize: '120px', // small screens
-        }
+        '--bg-image': `url(${cafeGrande})`
       }}
     >
       <div className="max-w-2xl mx-auto">
