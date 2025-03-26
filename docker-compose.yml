@@ -1,12 +1,11 @@
 # docker-compose.yml
 services:
-  react-menu:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  web:
+    container_name: sfc-menu
+    image: algiro/sfc-menu:latest
     ports:
-      - "3000:80"
-    volumes:
-      - ./src:/app/src
+      - "3000:443"
     environment:
       - NODE_ENV=production
+    volumes:
+      - ./nginx-certs:/etc/nginx/certs
