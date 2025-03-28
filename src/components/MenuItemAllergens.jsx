@@ -3,6 +3,9 @@ import React from 'react';
 import frutosSevosIcon from '../../images/al_frutos_secos.svg';
 import glutenIcon from '../../images/al_gluten.svg';
 import sesamoIcon from '../../images/al_sesamo.svg';
+import huevoIcon from '../../images/al_huevo.svg';
+import lacteosIcon from '../../images/al_lacteos.svg';
+import veganIcon from '../../images/vegan.svg';
 
 const AllergenIcons = ({ alergenos }) => {
     if (!alergenos) {
@@ -22,6 +25,19 @@ const AllergenIcons = ({ alergenos }) => {
             icon: sesamoIcon,
             label: 'Sésamo',
         },
+        huevo: {
+            icon: huevoIcon,
+            label: 'Huevo',
+        },
+        lacteos: {
+            icon: lacteosIcon,
+            label: 'Lacteos',
+        },
+        vegan: {
+            icon: veganIcon,
+            label: 'Vegan',
+        },
+
     };
 
     return (

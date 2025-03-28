@@ -3,6 +3,7 @@ import { tostas } from '../data/menuData';
 import tostasImg from '../../images/tostas.svg';
 import '../styles/menu.css';
 import AllergenIcons from './MenuItemAllergens'
+import VeganOptionIcon from './VeganOption'
 
 const TwoColumnMenu = () => {
     // Calculate the split point for the columns
@@ -32,6 +33,9 @@ const TwoColumnMenu = () => {
                             <span className="item-price">{tostas.tostaPrice} €</span>
                             <span className="item-note">Pulga</span>
                             <span className="item-price">{tostas.pulgaPrice} €</span>
+                        </div>
+                        <div className="menu-item-price">
+                            {tostas.opcionVegana && <VeganOptionIcon opcionVegana={tostas.opcionVegana} />}
                         </div>
                     </div>
                 </li>

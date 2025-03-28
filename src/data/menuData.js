@@ -68,25 +68,109 @@ export const tostas = [
         tostaPrice: "4,70",
         pulgaPrice: "3,00",
         alergenos: {
-            frutoSecos: true,
+            huevo: true,
             gluten: true,
-            sesamo: false
+            sesamo: true,
+            frutoSecos: false,
+            lacteos: false,
+            vegan: false
         }
     },
     {
         id: 2,
         name: "Lauryn Hill",
         ingredients: "Tomate, Aguacate, Yogur Y Pistacho.",
-        tostaPrice: "4,70",
-        pulgaPrice: "3,00"
+        tostaPrice: "4,80",
+        pulgaPrice: "3,00",
+        alergenos: {
+            huevo: false,
+            gluten: true,
+            sesamo: false,
+            frutoSecos: true,
+            lacteos: true,
+            vegan: false
+        },
+        opcionVegana: true
     },
     {
         id: 3,
         name: "Sharon Jones",
         ingredients: "Tomate, Aguacate, Yogur Y Pistacho.",
-        tostaPrice: "4,70",
-        pulgaPrice: "3,00"
+        tostaPrice: "4,90",
+        pulgaPrice: "3,00",
+        alergenos: {
+            huevo: false,
+            gluten: true,
+            sesamo: false,
+            frutoSecos: false,
+            lacteos: true,
+            vegan: false
+        }
+    },
+    {
+        id: 4,
+        name: "Joss Stone",
+        ingredients: "Aguacate, Queso semi curado, Almendra, Dátil Y Canela",
+        tostaPrice: "5,20",
+        pulgaPrice: "3,80",
+        alergenos: {
+            huevo: false,
+            gluten: true,
+            sesamo: false,
+            frutoSecos: true,
+            lacteos: true,
+            vegan: false
+        }
+    },
+    {
+        id: 5,
+        name: "Roberta Flack",
+        ingredients: "Mantequilla Y Mermelada",
+        tostaPrice: "3,20",
+        pulgaPrice: "2,50",
+        alergenos: {
+            huevo: false,
+            gluten: true,
+            sesamo: false,
+            frutoSecos: false,
+            lacteos: true,
+            vegan: false
+        },
+        opcionVegana: true
+    },
+    {
+        id: 6,
+        name: "Billie Holiday",
+        ingredients: "Aove* Y Tomate",
+        tostaPrice: "3,20",
+        pulgaPrice: "2,70",
+        alergenos: {
+            huevo: false,
+            gluten: true,
+            sesamo: false,
+            frutoSecos: false,
+            lacteos: false,
+            vegan: true
+        },
+        opcionVegana: false
+    },
+    {
+        id: 7,
+        name: "Amy Winehouse",
+        ingredients: "Tomate Cherry, Pesto Casero Y Queso De Cabra.",
+        tostaPrice: "4,80",
+        pulgaPrice: "3,00",
+        alergenos: {
+            huevo: false,
+            gluten: true,
+            sesamo: false,
+            frutoSecos: true,
+            lacteos: true,
+            vegan: false
+        },
+        opcionVegana: true
     }
+
 ];
 export const arepas = [
     {
@@ -101,7 +185,7 @@ export const arepas = [
         }
     },
     {
-        id: 1,
+        id: 2,
         name: "Reina Pepià",
         ingredients: "Proteina de soja, guacamole, veganesa, guisantes",
         price: "4,70",

@@ -254,6 +254,12 @@ body {
   padding-left: 0.1rem;
 }
 
+.vegan-option-icon {
+  width: 4rem;
+  vertical-align: middle;
+  padding-left: 0.7rem;
+}
+
 .allergen-tooltip {
   display: none;
   position: absolute;
