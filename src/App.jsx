@@ -3,6 +3,7 @@ import BebidasMenu from './components/BebidasMenu'
 import CafeMenu from './components/CafeMenu'
 import NotaMenu from './components/NotaMenu'
 import TostasMenu from './components/TostasMenu'
+import ArepasMenu from './components/ArepasMenu'
 
 import divisionImg from '../images/division.svg'
 import './styles/menu.css'
@@ -16,6 +17,7 @@ function App() {
             <CafeMenu />
             <NotaMenu text='Pregunta por nuestras tartas y galletas del día' />
             <TostasMenu />
+            <ArepasMenu />
         </div >
     )
 }

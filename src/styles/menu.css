@@ -5,6 +5,18 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Anton';
+  src: url('../fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0rem;
+}
+
 /* Apply the font to specific elements */
 .menu-container {
   font-family: 'CardenioModern', sans-serif;
@@ -25,6 +37,27 @@
   background-position: right top;
   background-size: 400px;
 }
+
+.menu-arepas-container {
+  font-family: 'Anton', sans-serif;
+  display: flex;
+  /* Enables flexbox for alignment */
+  align-items: center;
+  /* Centers items vertically */
+  justify-content: space-between;
+  /* Pushes left and right images to edges */
+  margin: 0 auto;
+  max-width: 800px;
+  /* Include fallback font */
+  padding: 2rem;
+  color: #180e00;
+  background-color: #cacaca;
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100%;
+}
+
 
 /* Medium screens */
 @media (max-width: 768px) {
@@ -48,8 +81,38 @@
   font-size: 1.2rem;
 }
 
+.arepas-list {
+  padding-top: 13rem;
+}
+
+/* Medium screens */
+@media (max-width: 768px) {
+  .arepas-list {
+    padding-top: 6rem;
+  }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .arepas-list {
+    padding-top: 6rem;
+  }
+}
+
+.item-arepas-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.2rem;
+}
+
 .item-price {
   font-family: 'CardenioModern', sans-serif;
+  font-size: 1.1rem;
+  color: white;
+  margin-left: 1rem;
+}
+
+.item-arepas-price {
+  font-family: 'Anton', sans-serif;
   font-size: 1.1rem;
   color: white;
   margin-left: 1rem;
@@ -61,6 +124,14 @@
   color: #bdbdbd;
   margin-left: 1rem;
 }
+
+.item-arepas-ingredients {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.1rem;
+  color: #2e1f1f;
+  margin-left: 1rem;
+}
+
 
 .item-note {
   font-family: 'CardenioModern', sans-serif;
@@ -201,6 +272,9 @@
   display: block;
 }
 
+.menu-item {
+  margin-bottom: 1.5rem;
+}
 
 .menu-item-container {
   display: flex;

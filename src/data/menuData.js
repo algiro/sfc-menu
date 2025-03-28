@@ -88,3 +88,37 @@ export const tostas = [
         pulgaPrice: "3,00"
     }
 ];
+export const arepas = [
+    {
+        id: 1,
+        name: "Simon Dìaz",
+        ingredients: "Aguacate + questo tierno de vaca y cabra",
+        price: "4,70",
+        alergenos: {
+            frutoSecos: true,
+            gluten: true,
+            sesamo: false
+        }
+    },
+    {
+        id: 1,
+        name: "Reina Pepià",
+        ingredients: "Proteina de soja, guacamole, veganesa, guisantes",
+        price: "4,70",
+        alergenos: {
+            frutoSecos: true,
+            gluten: true,
+        }
+    },
+    {
+        id: 3,
+        name: "Soledad Bravo",
+        ingredients: "Huevo, tomate, cebolla, ajì dulce, mantequilla o margarina",
+        price: "4,70",
+        alergenos: {
+            frutoSecos: true,
+            gluten: true,
+            huevo: true
+        }
+    }
+];
