@@ -2,6 +2,7 @@ import React from 'react';
 import { tostas } from '../data/menuData';
 import tostasImg from '../../images/tostas.svg';
 import '../styles/menu.css';
+import AllergenIcons from './MenuItemAllergens'
 
 const TwoColumnMenu = () => {
     // Calculate the split point for the columns
@@ -17,15 +18,27 @@ const TwoColumnMenu = () => {
         <ul className="space-y-4">
             {items.map(tostas => (
                 <li key={tostas.id} className="menu-item">
-                    <div className="flex justify-between items-baseline">
-                        <div className="item-name">{tostas.name}</div>
+                    <div className="menu-item-container"> {/* Main container for the item */}
+                        {/* Name and allergens in one line */}
+                        <div className="menu-item-header">
+                            <span className="item-name">{tostas.name}</span>
+                            {tostas.alergenos && <AllergenIcons alergenos={tostas.alergenos} />}
+                        </div>
+                        {/* Ingredients */}
                         <div className="item-ingredients">{tostas.ingredients}</div>
-                        <div><span className='item-note'>Tosta </span> <span className="item-price"> {tostas.tostaPrice} €</span>  <span className='item-note'> Pulga </span><span className="item-price"> {tostas.pulgaPrice} €</span></div>
+                        {/* Prices */}
+                        <div className="menu-item-price">
+                            <span className="item-note">Tosta</span>
+                            <span className="item-price">{tostas.tostaPrice} €</span>
+                            <span className="item-note">Pulga</span>
+                            <span className="item-price">{tostas.pulgaPrice} €</span>
+                        </div>
                     </div>
                 </li>
             ))}
         </ul>
     );
+
 
     return (
         <div

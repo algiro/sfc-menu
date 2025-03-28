@@ -8,6 +8,13 @@
 /* Apply the font to specific elements */
 .menu-container {
   font-family: 'CardenioModern', sans-serif;
+  display: flex;
+  /* Enables flexbox for alignment */
+  align-items: center;
+  /* Centers items vertically */
+  justify-content: space-between;
+  /* Pushes left and right images to edges */
+  margin: 0 auto;
   max-width: 800px;
   /* Include fallback font */
   padding: 2rem;
@@ -69,30 +76,59 @@
 .centered-div {
   margin: 0 auto;
   width: auto;
+}
+
+.no-padding {
   padding: 0rem;
 }
 
 .filler-div {
-  margin: 20px 0;
+  margin: 0.5rem 0;
   width: 100%;
 }
 
+/* Images for left/right notes */
+.note-img img {
+  width: 50px;
+  /* Set appropriate size for the note images */
+  height: auto;
+}
+
+/* Content in the center */
+.menu-content {
+  flex: 1;
+  /* Makes the center content take up remaining space */
+  text-align: center;
+}
+
+/* Text content */
 .nota-menu {
   font-family: 'CardenioModern', sans-serif;
   font-size: 1.5rem;
+  color: #FFB74D;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* Add to your existing CSS file */
 .two-column-layout {
   display: flex;
   gap: 2rem;
-  /* Space between columns */
+  /* Space between the columns */
   margin-top: 2rem;
+  width: 100%;
+  /* Ensures the container spans the full width of its parent */
+  box-sizing: border-box;
+  /* Prevent padding/margin from affecting size */
 }
 
 .column {
   flex: 1;
-  /* Each column takes equal width */
+  /* Makes the columns equally sized and take up all available space */
+  padding: 1rem;
+  /* Optional padding for spacing inside the column */
+  box-sizing: border-box;
+  /* Ensures padding doesn't affect column width */
 }
 
 /* Make it responsive */
@@ -120,4 +156,92 @@
     padding-top: 1rem;
     /* Further reduced for small screens */
   }
+}
+
+
+.allergen-icons-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  vertical-align: middle;
+}
+
+.allergen-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  margin-left: 4px;
+}
+
+.allergen-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  vertical-align: middle;
+  padding-left: 0.1rem;
+}
+
+.allergen-tooltip {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.allergen-icon-wrapper:hover .allergen-tooltip {
+  display: block;
+}
+
+
+.menu-item-container {
+  display: flex;
+  flex-direction: column;
+  /* Stack elements vertically */
+  gap: 0.5rem;
+  /* Add space between items */
+}
+
+/* Header section: name and allergens */
+.menu-item-header {
+  display: flex;
+  /* Inline display for name and allergens */
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-item-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Ingredients always on a new line */
+.item-ingredients {
+  color: #bdbdbd;
+  /* Light grey for readability */
+  font-size: 1rem;
+  white-space: normal;
+  word-wrap: break-word;
+  /* Wrap the text for long ingredients */
+}
+
+/* Price section in its own line */
+.menu-item-price {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allows items to wrap on small screens */
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: #fff;
+  /* White text */
 }

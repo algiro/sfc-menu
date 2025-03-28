@@ -66,7 +66,12 @@ export const tostas = [
         name: "Koko Taylor",
         ingredients: "Huevo Duro, Aguacate Y Sésamo Negro.",
         tostaPrice: "4,70",
-        pulgaPrice: "3,00"
+        pulgaPrice: "3,00",
+        alergenos: {
+            frutoSecos: true,
+            gluten: true,
+            sesamo: false
+        }
     },
     {
         id: 2,
