@@ -38,6 +38,27 @@ body {
   background-size: 400px;
 }
 
+.menu-reposteria-container {
+  font-family: 'CardenioModern', sans-serif;
+  display: flex;
+  /* Enables flexbox for alignment */
+  justify-content: space-between;
+  /* Pushes left and right images to edges */
+  margin: 0 auto;
+  max-width: 800px;
+  max-height: 433px;
+  width: 800px;
+  height: 433px;
+  /* Include fallback font */
+  padding: 2.5rem;
+  color: #FFB74D;
+  background-color: #0A6275;
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 800px;
+}
+
 .menu-arepas-container {
   font-family: 'Anton', sans-serif;
   display: flex;
@@ -58,12 +79,25 @@ body {
   background-size: 100%;
 }
 
+.reposteria-note {
+  font-size: 2.2rem;
+}
 
 /* Medium screens */
 @media (max-width: 768px) {
   .menu-container {
     background-size: 200px;
     /* Reduced size for medium screens */
+  }
+
+  .menu-reposteria-container {
+    background-size: 600px 450px;
+    padding: 0.5rem;
+    height: 253px;
+  }
+
+  .reposteria-note {
+    font-size: 1.2rem;
   }
 }
 
@@ -73,6 +107,16 @@ body {
     background-size: 120px;
     /* Further reduced for small screens */
   }
+
+  .menu-reposteria-container {
+    background-size: 400px 250px;
+    padding: 0.5rem;
+  }
+
+  .reposteria-note {
+    font-size: 1.2rem;
+  }
+
 }
 
 /* You can also apply it to specific elements */
