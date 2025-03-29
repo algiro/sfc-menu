@@ -8,12 +8,12 @@ export const cafes = [
     {
         id: 2,
         name: "Expreso Doble",
-        price: "1,80"
+        price: "1,50"
     },
     {
         id: 3,
         name: "Cortado Corto/Largo",
-        price: "1,40 /1,50"
+        price: "1,30 / 1,40"
     },
     {
         id: 4,
@@ -29,6 +29,44 @@ export const cafes = [
         id: 6,
         name: "Descafeinado Cortado corto/largo",
         price: "1,40/1,50"
+    },
+    {
+        id: 7,
+        name: "Chocolate",
+        price: "1,90"
+    },
+    {
+        id: 8,
+        name: "Capuccino/descafeinado",
+        price: "1,80/1,90"
+    },
+    {
+        id: 9,
+        name: "Copa Soul (chocolate,café, nata,sirope)",
+        price: "4,00"
+    },
+    {
+        id: 10,
+        name: "Barraquito",
+        price: "2,10"
+    }
+];
+
+export const te = [
+    {
+        id: 1,
+        name: "Manzanilla, Tila, Menta Poleo",
+        price: "1,20"
+    },
+    {
+        id: 2,
+        name: "Infusiones y tés a granel",
+        price: "2,20"
+    },
+    {
+        id: 3,
+        name: "Té Matcha",
+        price: "2,50"
     }
 ];
 
@@ -55,9 +93,24 @@ export const bebidas = [
     },
     {
         id: 5,
-        name: "Refrescos",
-        price: "2,00"
+        name: "Appleteiser,Aquarius o Nestea",
+        price: "1,90"
     },
+    {
+        id: 6,
+        name: "Refrescos",
+        price: "1,60"
+    },
+    {
+        id: 7,
+        name: "Tonica",
+        price: "2,10"
+    },
+    {
+        id: 8,
+        name: "Malta",
+        price: "1,50"
+    }
 ];
 
 export const tostas = [
@@ -179,9 +232,7 @@ export const arepas = [
         ingredients: "Aguacate + questo tierno de vaca y cabra",
         price: "4,70",
         alergenos: {
-            frutoSecos: true,
-            gluten: true,
-            sesamo: false
+            lacteos: true
         }
     },
     {
@@ -190,8 +241,7 @@ export const arepas = [
         ingredients: "Proteina de soja, guacamole, veganesa, guisantes",
         price: "4,70",
         alergenos: {
-            frutoSecos: true,
-            gluten: true,
+            lacteos: true,
         }
     },
     {
@@ -200,9 +250,35 @@ export const arepas = [
         ingredients: "Huevo, tomate, cebolla, ajì dulce, mantequilla o margarina",
         price: "4,70",
         alergenos: {
-            frutoSecos: true,
-            gluten: true,
+            lacteos: true,
             huevo: true
+        }
+    },
+    {
+        id: 4,
+        name: "Billo's Caracas Boys",
+        ingredients: "Questo tierno de vaca y cabra, mantequilla o margarina",
+        price: "4,70",
+        alergenos: {
+            lacteos: true
+        }
+    },
+    {
+        id: 5,
+        name: "Desorden Pùblico",
+        ingredients: "Salchicha de proteina de guisantes, veganesa, guisantes, cebolla (opcional)",
+        price: "4,70",
+        alergenos: {
+            vegan: true
+        }
+    },
+    {
+        id: 6,
+        name: "Arepitas Dulces",
+        ingredients: "Arepa frita, panelam matalauva",
+        price: "3,00",
+        alergenos: {
+            vegan: true
         }
     }
 ];
