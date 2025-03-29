@@ -59,6 +59,35 @@ body {
   background-size: 800px;
 }
 
+.menu-smoothie-container {
+  font-family: 'CardenioModern', sans-serif;
+  display: flex;
+  /* Enables flexbox for alignment */
+  align-items: center;
+  /* Centers items vertically */
+  justify-content: space-between;
+  /* Pushes left and right images to edges */
+  margin: 0 auto;
+  max-width: 800px;
+  /* Include fallback font */
+  padding: 2rem;
+  color: #FFB74D;
+  background-color: #0A6275;
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 200px;
+}
+
+.menu-smoothie-bottom {
+  width: 800px;
+  height: 233px;
+  background-color: #0A6275;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 800px;
+}
+
 .menu-arepas-container {
   font-family: 'Anton', sans-serif;
   display: flex;
@@ -90,10 +119,24 @@ body {
     /* Reduced size for medium screens */
   }
 
+  .menu-smoothie-container {
+    background-size: 100px;
+  }
+
   .menu-reposteria-container {
     background-size: 600px 450px;
     padding: 0.5rem;
     height: 253px;
+  }
+
+  .menu-smoothie-bottom {
+    background-size: 600px 150px;
+    padding: 0.5rem;
+    height: 153px;
+  }
+
+  .reduced-padding {
+    padding: 0.5rem;
   }
 
   .reposteria-note {
@@ -108,9 +151,19 @@ body {
     /* Further reduced for small screens */
   }
 
+  .menu-smoothie-container {
+    background-size: 80px;
+  }
+
   .menu-reposteria-container {
     background-size: 400px 250px;
     padding: 0.5rem;
+  }
+
+  .menu-smoothie-bottom {
+    background-size: 400px 150px;
+    padding: 0.5rem;
+    height: 153px;
   }
 
   .reposteria-note {
@@ -176,6 +229,10 @@ body {
   margin-left: 1rem;
 }
 
+.cuenco-note {
+  font-size: 1.3rem;
+  color: #bdbdbd;
+}
 
 .item-note {
   font-family: 'CardenioModern', sans-serif;

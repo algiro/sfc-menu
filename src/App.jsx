@@ -5,6 +5,8 @@ import NotaMenu from './components/NotaMenu'
 import TostasMenu from './components/TostasMenu'
 import ArepasMenu from './components/ArepasMenu'
 import ReposteriaMenu from './components/ReposteriaMenu'
+import CuencoMenu from './components/CuencoMenu'
+import SmoothieMenu from './components/SmoothieMenu'
 
 import divisionImg from '../images/division.svg'
 import './styles/menu.css'
@@ -20,6 +22,8 @@ function App() {
             <div className='menu-container centered-div'><img src={divisionImg} className='filler-div' /></div>
             <TostasMenu />
             <div className='menu-container centered-div'><img src={divisionImg} className='filler-div' /></div>
+            <CuencoMenu />
+            <SmoothieMenu />
             <ArepasMenu />
         </div >
     )
