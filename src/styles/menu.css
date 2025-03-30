@@ -72,7 +72,7 @@ body {
   /* Include fallback font */
   padding: 2rem;
   color: #FFB74D;
-  background-color: #0A6275;
+  background-color: rgb(10, 98, 117);
   background-image: var(--bg-image);
   background-repeat: no-repeat;
   background-position: right top;

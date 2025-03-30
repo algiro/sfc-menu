@@ -5,7 +5,7 @@ import '../styles/menu.css';
 
 const CuencoMenu = () => {
   return (
-    <div
+    <div id="cuencos-id"
       className="min-h-screen p-8 text-amber-400 menu-container centered-div reduced-padding"
     >
       <div className="max-w-2xl mx-auto">

@@ -8,7 +8,7 @@ import '../styles/menu.css';
 
 const CafeMenu = () => {
   return (
-    <div>
+    <div id="cafe-id">
       <div
         className="min-h-screen p-8 text-amber-400 menu-container centered-div"
         style={{

@@ -2,10 +2,18 @@
 <html lang="en">
 
 <head>
+    <title>Soul Food Cafe Menu</title>
+</head>
+
+<header class="fixed-header">
+    <div class="logo">
+        <span> <img class="logo-img" src="./images/logo_small.png" alt="Company Logo"> </span>
+        <span><a href="#cafe-id">CAFÈ</a> </span>
+        <span><a href="#cuencos-id">CUENCOS</a> </span>
+    </div>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu App</title>
-</head>
+</header>
 
 <body>
     <div id="root"></div>
@@ -14,6 +22,40 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        .logo {
+            height: 40px;
+            align-items: center;
+            gap: 20px;
+            display: flex;
+        }
+
+        .logo-img {
+            height: 100px;
+            align-content: end;
+            display: flex;
+            margin-top: 3rem;
+        }
+
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #0A6275;
+            /* Or your preferred background color */
+            box-shadow: 0 2px 4px #01121a;
+            /* Optional shadow effect */
+            z-index: 1000;
+            /* Ensures header stays above other content */
+            padding: 10px 20px;
+        }
+
+        body {
+            padding-top: 80px;
+            background-color: #0A6275;
+            /* Adjust based on your header height */
         }
 
         .container {
@@ -32,6 +74,16 @@
             h1 {
                 font-size: 2.5rem;
             }
+
+            .logo-img {
+                height: 60px;
+                margin-top: 1.5rem;
+            }
+
+            .logo {
+                height: 30px;
+            }
+
         }
     </style>
     <script type="module" src="/src/main.jsx"></script>
