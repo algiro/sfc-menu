@@ -32,21 +32,36 @@ export const cafes = [
     },
     {
         id: 7,
+        name: "Cafe Americano",
+        price: "1,60"
+    },
+    {
+        id: 8,
+        name: "Leche y Leche corto/largo",
+        price: "1,40/1,50"
+    },
+    {
+        id: 9,
+        name: "Café bombón corto/largo",
+        price: "1,30/1,40"
+    },
+    {
+        id: 10,
         name: "Chocolate",
         price: "1,90"
     },
     {
-        id: 8,
+        id: 11,
         name: "Capuccino/descafeinado",
         price: "1,80/1,90"
     },
     {
-        id: 9,
+        id: 12,
         name: "Copa Soul (chocolate,café, nata,sirope)",
         price: "4,00"
     },
     {
-        id: 10,
+        id: 13,
         name: "Barraquito",
         price: "2,10"
     }
@@ -79,17 +94,17 @@ export const bebidas = [
     {
         id: 2,
         name: "Zumo de Naranja (0,25 cl)",
-        price: "1,80"
+        price: "2,70"
     },
     {
         id: 3,
         name: "Zumo de Naranja (0,38 cl)",
-        price: "1,40 /1,50"
+        price: "3,70"
     },
     {
         id: 4,
         name: "Kombucha (varios sabores disponibles)",
-        price: "1,50"
+        price: "2,95"
     },
     {
         id: 5,
@@ -241,7 +256,7 @@ export const arepas = [
         ingredients: "Proteina de soja, guacamole, veganesa, guisantes",
         price: "4,70",
         alergenos: {
-            lacteos: true,
+            vegan: true
         }
     },
     {
