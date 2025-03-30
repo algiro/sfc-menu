@@ -34,7 +34,7 @@ const CafeMenu = () => {
         </div>
       </div>
 
-      <div
+      <div id="te-id"
         className="min-h-screen p-8 text-amber-400 menu-container centered-div"
         style={{
           '--bg-image': `url(${infusiones})`

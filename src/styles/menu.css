@@ -15,7 +15,46 @@
 body {
   margin: 0;
   padding: 0rem;
+  padding-top: 80px;
+  background-color: #0A6275;
 }
+
+.logo {
+  font-family: 'CardenioModern', sans-serif;
+  font-size: 2rem;
+  height: 40px;
+  align-items: center;
+  gap: 30px;
+  display: flex;
+}
+
+.logo a {
+  color: white;
+  text-decoration: none;
+  /* Optional: removes underline */
+}
+
+.logo-img {
+  height: 100px;
+  align-content: end;
+  display: flex;
+  margin-top: 3rem;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0A6275;
+  /* Or your preferred background color */
+  box-shadow: 0 2px 4px #01121a;
+  /* Optional shadow effect */
+  z-index: 1000;
+  /* Ensures header stays above other content */
+  padding: 10px 20px;
+}
+
 
 /* Apply the font to specific elements */
 .menu-container {
@@ -142,6 +181,18 @@ body {
   .reposteria-note {
     font-size: 1.2rem;
   }
+
+  .logo-img {
+    height: 60px;
+    margin-top: 1.5rem;
+  }
+
+  .logo {
+    height: 30px;
+    font-size: 0.8rem;
+    gap: 0.4rem;
+  }
+
 }
 
 /* Small screens */

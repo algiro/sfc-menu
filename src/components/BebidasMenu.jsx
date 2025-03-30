@@ -5,7 +5,7 @@ import '../styles/menu.css';
 
 const CafeMenu = () => {
   return (
-    <div
+    <div id="bebidas-id"
       className="min-h-screen p-8 text-amber-400 menu-container centered-div"
       style={{
         '--bg-image': `url(${bebidaImg})`

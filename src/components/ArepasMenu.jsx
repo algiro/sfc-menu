@@ -39,7 +39,7 @@ const TwoColumnMenu = () => {
 
 
     return (
-        <div
+        <div id="arepas-id"
             className="min-h-screen p-8 text-amber-400 menu-arepas-container centered-div"
             style={{
                 '--bg-image': `url(${arepasHeaderImg})`

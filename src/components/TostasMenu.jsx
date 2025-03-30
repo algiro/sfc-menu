@@ -45,7 +45,7 @@ const TwoColumnMenu = () => {
 
 
     return (
-        <div
+        <div id="tostas-id"
             className="min-h-screen p-8 text-amber-400 menu-container centered-div"
             style={{
                 '--bg-image': `url(${tostasImg})`
