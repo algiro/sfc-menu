@@ -12,6 +12,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Zakirahs';
+  src: url('../fonts/ZakirahsCasual.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0rem;
@@ -108,6 +115,7 @@ body {
   /* Pushes left and right images to edges */
   margin: 0 auto;
   max-width: 800px;
+  height: 400px;
   /* Include fallback font */
   padding: 2rem;
   color: #FFB74D;
@@ -118,13 +126,24 @@ body {
   background-size: 200px;
 }
 
-.menu-smoothie-bottom {
+.menu-smoothie-footer {
+  display: flex;
+  /* Enables flexbox for alignment */
+  justify-content: space-between;
+  /* Pushes left and right images to edges */
+  margin: 0 auto;
+  max-width: 800px;
+  max-height: 433px;
   width: 800px;
-  height: 233px;
+  height: 173px;
+  /* Include fallback font */
+  padding: 2.5rem;
+  color: #FFB74D;
   background-color: #0A6275;
+  background-image: var(--bg-image);
   background-repeat: no-repeat;
-  background-position: top;
-  background-size: 800px;
+  background-position: top center;
+  background-size: 300px;
 }
 
 .menu-arepas-container {
@@ -162,16 +181,16 @@ body {
     background-size: 100px;
   }
 
+  .menu-smoothie-footer {
+    background-size: 150px;
+    height: 80px;
+    padding: 1.5rem;
+  }
+
   .menu-reposteria-container {
     background-size: 600px 450px;
     padding: 0.5rem;
     height: 253px;
-  }
-
-  .menu-smoothie-bottom {
-    background-size: 600px 150px;
-    padding: 0.5rem;
-    height: 153px;
   }
 
   .reduced-padding {
@@ -209,12 +228,6 @@ body {
   .menu-reposteria-container {
     background-size: 400px 250px;
     padding: 0.5rem;
-  }
-
-  .menu-smoothie-bottom {
-    background-size: 400px 150px;
-    padding: 0.5rem;
-    height: 153px;
   }
 
   .reposteria-note {

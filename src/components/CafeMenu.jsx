@@ -30,7 +30,8 @@ const CafeMenu = () => {
                 ))}
             </ul>
           </div>
-
+          <div className="item-name">EXTRA DE LECHE + 0,30€</div>
+          <div className="item-name">EXTRA DE BEBIDA VEGETAL + 0,30€</div>
         </div>
       </div>
 
@@ -55,8 +56,6 @@ const CafeMenu = () => {
                 ))}
             </ul>
           </div>
-          <div className="item-name">EXTRA DE LECHE + 0,30€</div>
-          <div className="item-name">EXTRA DE LECHE VEGETAL + 0,30€</div>
         </div>
       </div>
     </div>

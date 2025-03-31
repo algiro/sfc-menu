@@ -63,7 +63,11 @@ const TwoColumnMenu = () => {
                         <MenuColumn items={secondColumn} />
                     </div>
                 </div>
+                <div className="item-name" style={{ fontFamily: 'Zakirahs', textAlign: 'center' }}>*Aove: Aceite de Oliva Virgen Extra </div>
+                <div className="item-name" style={{ fontFamily: 'Zakirahs', textAlign: 'center' }}>  ●  ●  ●  ●  ●  ● </div>
+                <div className="item-name" style={{ fontFamily: 'Zakirahs', textAlign: 'center' }}>EXTRA PAN SIN GLUTEN + 0,50€</div>
             </div>
+
         </div >
     );
 };
