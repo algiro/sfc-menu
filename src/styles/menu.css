@@ -146,6 +146,26 @@ body {
   background-size: 300px;
 }
 
+.menu-arepas-header {
+  font-family: 'Anton', sans-serif;
+  display: flex;
+  /* Enables flexbox for alignment */
+  align-items: center;
+  /* Centers items vertically */
+  justify-content: space-between;
+  /* Pushes left and right images to edges */
+  margin: 0 auto;
+  max-width: 800px;
+  /* Include fallback font */
+  height: 380px;
+  color: #180e00;
+  background-color: #d5d5d5;
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100%;
+}
+
 .menu-arepas-container {
   font-family: 'Anton', sans-serif;
   display: flex;
@@ -157,13 +177,13 @@ body {
   margin: 0 auto;
   max-width: 800px;
   /* Include fallback font */
-  padding: 2rem;
+  padding: 0.1rem;
   color: #180e00;
   background-color: #cacaca;
   background-image: var(--bg-image);
   background-repeat: no-repeat;
-  background-position: top center;
-  background-size: 100%;
+  background-position: top;
+  background-size: cover;
 }
 
 .reposteria-note {
@@ -191,6 +211,10 @@ body {
     background-size: 600px 450px;
     padding: 0.5rem;
     height: 253px;
+  }
+
+  .menu-arepas-header {
+    height: 180px;
   }
 
   .reduced-padding {
@@ -289,7 +313,7 @@ body {
 .item-arepas-ingredients {
   font-family: 'Anton', sans-serif;
   font-size: 1.1rem;
-  color: #2e1f1f;
+  color: #683434;
   margin-left: 1rem;
 }
 
@@ -347,9 +371,13 @@ body {
   text-align: center;
 }
 
+.note-item {
+  font-family: 'Zakirahs', sans-serif;
+}
+
 /* Text content */
 .nota-menu {
-  font-family: 'CardenioModern', sans-serif;
+  font-family: 'Zakirahs', sans-serif;
   font-size: 1.5rem;
   color: #FFB74D;
   margin-top: 1rem;

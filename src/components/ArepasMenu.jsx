@@ -1,7 +1,7 @@
 import React from 'react';
 import { arepas } from '../data/menuData';
 import arepasHeaderImg from '../../images/arepas_title.png';
-import arepasBackgroundImg from '../../images/arepas_background.png';
+import arepasBackgroundImg from '../../images/back_arepas.png';
 import '../styles/menu.css';
 import AllergenIcons from './MenuItemAllergens'
 
@@ -39,26 +39,32 @@ const TwoColumnMenu = () => {
 
 
     return (
-        <div id="arepas-id"
-            className="min-h-screen p-8 text-amber-400 menu-arepas-container centered-div"
-            style={{
-                '--bg-image': `url(${arepasHeaderImg})`
-            }}
-        >
-
-            <div className="max-w-2xl mx-auto arepas-list">
-                <div className="avoid-overlap">   </div>
-                {/* Two-column layout */}
-                <div className="two-column-layout">
-                    <div className="column">
-                        <MenuColumn items={firstColumn} />
-                    </div>
-                    <div className="column">
-                        <MenuColumn items={secondColumn} />
+        <div id="arepas-id">
+            <div
+                className="min-h-screen p-8 text-amber-400 menu-arepas-header centered-div"
+                style={{
+                    '--bg-image': `url(${arepasHeaderImg})`
+                }}
+            />
+            <div
+                className="min-h-screen p-8 text-amber-400 menu-arepas-container centered-div"
+                style={{
+                    '--bg-image': `url(${arepasBackgroundImg})`
+                }}
+            >
+                <div className="max-w-2xl mx-auto">
+                    {/* Two-column layout */}
+                    <div className="two-column-layout">
+                        <div className="column">
+                            <MenuColumn items={firstColumn} />
+                        </div>
+                        <div className="column">
+                            <MenuColumn items={secondColumn} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div >
+            </div >
+        </div>
     );
 };
 
