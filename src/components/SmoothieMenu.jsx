@@ -14,12 +14,12 @@ const SmoothieMenu = () => {
       >
         <div className="max-w-2xl mx-auto">
           <h1 className='section-title'>SMOOTHIE</h1>
-          <div className="item-price"> 3,90 € (0,38 cl) / 4,90 € (0,50 cl)</div>
+          <div className="item-price"> 4,90 € (0,38 cl) / 5,90 € (0,50 cl)</div>
           <div className="cuenco-note"> 1. Plátano, remolacha y jengibre</div>
           <div className="cuenco-note"> 2. Arándanos, platano, piña y jengibre</div>
           <div className="cuenco-note"> 3. Frutos rojos, remolacha y naranja</div>
           <div className="cuenco-note"> 4. Pera, fresa, mango y un toque de pimienta</div>
-          <div className="cuenco-note"> 5. Pera, kiwi y pulpa de guanábana</div>
+          <div className="cuenco-note"> 5. Smoothie del mes </div>
           <div className="cuenco-note"> 6. Piña, plátano y leche de coco</div>
           <div className="cuenco-note"> 7. Papaya, naranja y fresa</div>
           <div className="cuenco-note"> 8. Plátano, fresa y naranja</div>

@@ -15,6 +15,7 @@ const ReposteriaMenu = () => {
         <div className="reposteria-note">REPOSTERÍA ARTESANAL</div>
         <div className="reposteria-note">PASTELERÍA VEGANA,</div>
         <div className="reposteria-note">SIN GLUTEN Y SIN AZUCAR</div>
+        <div className="reposteria-note">HELADO ARTESANAL</div>
       </div>
     </div>
   );

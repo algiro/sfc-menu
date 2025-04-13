@@ -12,13 +12,13 @@ const CuencoMenu = () => {
         <div className="two-column-layout">
           <div className="column menu-content">
             <h1 className='section-title'>CUENCOS</h1>
-            <div className="item-price"> 5,00€</div>
+            <div className="item-price"> 6,80€</div>
             <div className="cuenco-note"> Todos nuestros cuencos incluyen crema de frutos secos naturales y semillas. Recuerda avisarnos de cualquier alergia o intolerancia</div>
           </div>
           <div className="column">
-            <div className="cuenco-note"><span class="note-number"> 1) </span> <span> Elige la base que más te guste: yogur (griego o vegetal) o Açai (+ 0,70 €) </span> </div>
+            <div className="cuenco-note"><span class="note-number"> 1) </span> <span> Elige la base que más te guste: yogur (griego o vegetal) o Açai </span> </div>
             <div className="cuenco-note"><span class="note-number"> 2) </span> <span> Elige el cereal que más te guste: avena, espelta, cereal sin gluten, muesli o mix de cereal inflado </span> </div>
-            <div className="cuenco-note"><span class="note-number"> 3) </span> <span> Elige frutas de temporada </span> </div>
+            <div className="cuenco-note"><span class="note-number"> 3) </span> <span> Platano + 2 frutas de temporada </span> </div>
           </div>
         </div>
       </div>
