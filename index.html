@@ -3,8 +3,30 @@
 
 <head>
     <title>Soul Food Cafe Menu</title>
-</head>
+    <style>
+        /* Add these styles for language selector */
+        .language-selector {
+            margin-left: auto;
+            padding: 0 20px;
+        }
 
+        .language-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 1em;
+        }
+
+
+        .language-btn.active {
+            border-bottom: 2px solid currentColor;
+        }
+    </style>
+
+
+</head>
 <header class="fixed-header">
     <div class="logo">
         <span> <img class="logo-img" src="./images/logo_small.png" alt="Company Logo"> </span>
@@ -15,6 +37,10 @@
         <span><a href="#cuencos-id">Cuencos</a> </span>
         <span><a href="#smoothie-id">Smoothie</a> </span>
         <span><a href="#arepas-id">Arepas</a> </span>
+        <div class="language-selector">
+            <button id="lang-es" class="language-btn active">ES</button>
+            <button id="lang-en" class="language-btn">EN</button>
+        </div>
     </div>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +54,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
 
         .container {
             max-width: 1200px;
@@ -46,8 +71,6 @@
             h1 {
                 font-size: 2.5rem;
             }
-
-
         }
     </style>
     <script type="module" src="/src/main.jsx"></script>
