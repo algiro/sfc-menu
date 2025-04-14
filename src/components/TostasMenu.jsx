@@ -5,7 +5,7 @@ import '../styles/menu.css';
 import AllergenIcons from './MenuItemAllergens'
 import VeganOptionIcon from './VeganOption'
 
-const TwoColumnMenu = () => {
+const TwoColumnMenu = ({ lang = 'es' }) => {
     // Calculate the split point for the columns
     const totalItems = tostas.length;
     const firstColumnCount = Math.ceil(totalItems / 2);
@@ -26,7 +26,7 @@ const TwoColumnMenu = () => {
                             {tostas.alergenos && <AllergenIcons alergenos={tostas.alergenos} />}
                         </div>
                         {/* Ingredients */}
-                        <div className="item-ingredients">{tostas.ingredients}</div>
+                        <div className="item-ingredients">{tostas.ingredients[lang]}</div>
                         {/* Prices */}
                         <div className="menu-item-price">
                             <span className="item-note">Tosta</span>

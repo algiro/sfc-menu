@@ -5,7 +5,7 @@ import arepasBackgroundImg from '../../images/back_arepas.png';
 import '../styles/menu.css';
 import AllergenIcons from './MenuItemAllergens'
 
-const TwoColumnMenu = () => {
+const TwoColumnMenu = ({ lang = 'es' }) => {
     // Calculate the split point for the columns
     const totalItems = arepas.length;
     const firstColumnCount = Math.ceil(totalItems / 2);
@@ -26,7 +26,7 @@ const TwoColumnMenu = () => {
                             {arepas.alergenos && <AllergenIcons alergenos={arepas.alergenos} />}
                         </div>
                         {/* Ingredients */}
-                        <div className="item-arepas-ingredients">{arepas.ingredients}</div>
+                        <div className="item-arepas-ingredients">{arepas.ingredients[lang]}</div>
                         {/* Prices */}
                         <div className="menu-item-price">
                             <span className="item-arepas-price">{arepas.price} €</span>

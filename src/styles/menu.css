@@ -19,6 +19,26 @@
   font-style: normal;
 }
 
+/* Add these styles for language selector */
+.language-selector {
+  margin-left: auto;
+  padding: 0 20px;
+}
+
+.language-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 1em;
+}
+
+
+.language-btn.active {
+  border-bottom: 2px solid currentColor;
+}
+
 body {
   margin: 0;
   padding: 0rem;
@@ -258,6 +278,33 @@ body {
     font-size: 1.2rem;
   }
 
+}
+
+/* Very Small screens */
+@media (max-width: 360px) {
+  .menu-container {
+    background-size: 120px;
+    /* Further reduced for small screens */
+  }
+
+  .menu-smoothie-container {
+    background-size: 80px;
+  }
+
+  .menu-reposteria-container {
+    background-size: 400px 250px;
+    padding: 0.5rem;
+  }
+
+  .reposteria-note {
+    font-size: 1.0rem;
+  }
+
+  .logo {
+    height: 30px;
+    font-size: 0.7rem;
+    gap: 0.3rem;
+  }
 }
 
 /* You can also apply it to specific elements */

@@ -3,7 +3,7 @@ import { bebidas } from '../data/menuData';
 import bebidaImg from '../../images/bebidas.svg';
 import '../styles/menu.css';
 
-const CafeMenu = () => {
+const CafeMenu = ({ lang = 'es' }) => {
   return (
     <div id="bebidas-id"
       className="min-h-screen p-8 text-amber-400 menu-container centered-div"
@@ -19,7 +19,7 @@ const CafeMenu = () => {
               .map(beverage => (
                 <li key={beverage.id} className="menu-item">
                   <div className="flex justify-between items-baseline">
-                    <div className="item-name">{beverage.name}</div>
+                    <div className="item-name">{beverage.name[lang]}</div>
                     <div className="item-price">{beverage.price} €</div>
                   </div>
                 </li>

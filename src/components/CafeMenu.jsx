@@ -6,7 +6,7 @@ import cafeGrande from '../../images/cafe-grande.svg';
 import infusiones from '../../images/infusiones.svg';
 import '../styles/menu.css';
 
-const CafeMenu = () => {
+const CafeMenu = ({ lang = 'es' }) => {
   return (
     <div id="cafe-id">
       <div
@@ -23,7 +23,7 @@ const CafeMenu = () => {
                 .map(cafes => (
                   <li key={cafes.id} className="menu-item">
                     <div className="flex justify-between items-baseline">
-                      <div className="item-name">{cafes.name}</div>
+                      <div className="item-name">{cafes.name[lang]}</div>
                       <div className="item-price">{cafes.price} €</div>
                     </div>
                   </li>
@@ -50,7 +50,7 @@ const CafeMenu = () => {
                 .map(te => (
                   <li key={te.id} className="menu-item">
                     <div className="flex justify-between items-baseline">
-                      <div className="item-name">{te.name}</div>
+                      <div className="item-name">{te.name[lang]}</div>
                       <div className="item-price">{te.price} €</div>
                     </div>
                   </li>
