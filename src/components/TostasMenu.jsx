@@ -1,48 +1,51 @@
-import React from 'react';
-import { tostas } from '../data/menuData';
+
+import React, { useEffect, useState } from 'react';
 import tostasImg from '../../images/tostas.svg';
 import '../styles/menu.css';
-import AllergenIcons from './MenuItemAllergens'
-import VeganOptionIcon from './VeganOption'
+import AllergenIcons from './MenuItemAllergens';
+import VeganOptionIcon from './VeganOption';
 
-const TwoColumnMenu = ({ lang = 'es' }) => {
+
+const TostasMenu = ({ lang = 'es' }) => {
+    const [tostas, setTostas] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/menuData')
+            .then(res => res.json())
+            .then(data => setTostas(data.tostas || []));
+    }, []);
+
     // Calculate the split point for the columns
     const totalItems = tostas.length;
     const firstColumnCount = Math.ceil(totalItems / 2);
-
-    // Split the array into two columns
     const firstColumn = tostas.slice(0, firstColumnCount);
     const secondColumn = tostas.slice(firstColumnCount);
 
     // Component for rendering a single menu column
     const MenuColumn = ({ items }) => (
         <ul className="space-y-4">
-            {items.map(tostas => (
-                <li key={tostas.id} className="menu-item">
-                    <div className="menu-item-container"> {/* Main container for the item */}
-                        {/* Name and allergens in one line */}
+            {items.map(tosta => (
+                <li key={tosta.id} className="menu-item">
+                    <div className="menu-item-container">
                         <div className="menu-item-header">
-                            <span className="item-name">{tostas.name}</span>
-                            {tostas.alergenos && <AllergenIcons alergenos={tostas.alergenos} />}
+                            <span className="item-name">{tosta.name}</span>
+                            {tosta.alergenos && <AllergenIcons alergenos={tosta.alergenos} />}
                         </div>
-                        {/* Ingredients */}
-                        <div className="item-ingredients">{tostas.ingredients[lang]}</div>
-                        {/* Prices */}
+                        <div className="item-ingredients">{tosta.ingredients[lang]}</div>
                         <div className="menu-item-price">
                             <span className="item-note">Tosta</span>
-                            <span className="item-price">{tostas.tostaPrice} €</span>
+                            <span className="item-price">{tosta.tostaPrice} €</span>
                             <span className="item-note">Pulga</span>
-                            <span className="item-price">{tostas.pulgaPrice} €</span>
+                            <span className="item-price">{tosta.pulgaPrice} €</span>
                         </div>
                         <div className="menu-item-price">
-                            {tostas.opcionVegana && <VeganOptionIcon opcionVegana={tostas.opcionVegana} />}
+                            {tosta.opcionVegana && <VeganOptionIcon opcionVegana={tosta.opcionVegana} />}
                         </div>
                     </div>
                 </li>
             ))}
         </ul>
     );
-
 
     return (
         <div id="tostas-id"
@@ -54,7 +57,6 @@ const TwoColumnMenu = ({ lang = 'es' }) => {
             <div className="max-w-2xl mx-auto">
                 <h1 className="text-5xl font-bold mb-8">TOSTAS</h1>
                 <div className="avoid-overlap">   </div>
-                {/* Two-column layout */}
                 <div className="two-column-layout">
                     <div className="column">
                         <MenuColumn items={firstColumn} />
@@ -67,9 +69,8 @@ const TwoColumnMenu = ({ lang = 'es' }) => {
                 <div className="note-item" style={{ textAlign: 'center' }}>  ●  ●  ●  ●  ●  ● </div>
                 <div className="note-item" style={{ textAlign: 'center' }}>EXTRA PAN SIN GLUTEN + 0,50€</div>
             </div>
-
-        </div >
+        </div>
     );
 };
 
-export default TwoColumnMenu;
+export default TostasMenu;

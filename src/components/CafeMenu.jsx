@@ -1,12 +1,23 @@
-import React from 'react';
-import { cafes } from '../data/menuData';
-import { te } from '../data/menuData';
 
+import React, { useEffect, useState } from 'react';
 import cafeGrande from '../../images/cafe-grande.svg';
 import infusiones from '../../images/infusiones.svg';
 import '../styles/menu.css';
 
+
 const CafeMenu = ({ lang = 'es' }) => {
+  const [cafes, setCafes] = useState([]);
+  const [te, setTe] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/menuData')
+      .then(res => res.json())
+      .then(data => {
+        setCafes(data.cafes || []);
+        setTe(data.te || []);
+      });
+  }, []);
+
   return (
     <div id="cafe-id">
       <div
@@ -19,15 +30,14 @@ const CafeMenu = ({ lang = 'es' }) => {
           <h1 className='section-title'>CAFÈ</h1>
           <div className="mb-8">
             <ul className="space-y-4">
-              {cafes
-                .map(cafes => (
-                  <li key={cafes.id} className="menu-item">
-                    <div className="flex justify-between items-baseline">
-                      <div className="item-name">{cafes.name[lang]}</div>
-                      <div className="item-price">{cafes.price} €</div>
-                    </div>
-                  </li>
-                ))}
+              {cafes.map(cafe => (
+                <li key={cafe.id} className="menu-item">
+                  <div className="flex justify-between items-baseline">
+                    <div className="item-name">{cafe.name[lang]}</div>
+                    <div className="item-price">{cafe.price} €</div>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="note-item" style={{ textAlign: 'center' }}>EXTRA DE LECHE + 0,30€</div>
@@ -46,21 +56,19 @@ const CafeMenu = ({ lang = 'es' }) => {
           <h1 className='section-title'>Té e Infusiones</h1>
           <div className="mb-8">
             <ul className="space-y-4">
-              {te
-                .map(te => (
-                  <li key={te.id} className="menu-item">
-                    <div className="flex justify-between items-baseline">
-                      <div className="item-name">{te.name[lang]}</div>
-                      <div className="item-price">{te.price} €</div>
-                    </div>
-                  </li>
-                ))}
+              {te.map(teItem => (
+                <li key={teItem.id} className="menu-item">
+                  <div className="flex justify-between items-baseline">
+                    <div className="item-name">{teItem.name[lang]}</div>
+                    <div className="item-price">{teItem.price} €</div>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
     </div>
-
   );
 };
 

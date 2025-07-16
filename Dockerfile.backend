@@ -1,0 +1,15 @@
+# Dockerfile for backend Express API
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+COPY src/api ./src/api
+COPY src/data ./src/data
+COPY server.cjs ./
+
+RUN npm install express cors body-parser
+
+EXPOSE 3001
+
+CMD ["node", "server.cjs"]

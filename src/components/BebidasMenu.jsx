@@ -1,9 +1,16 @@
-import React from 'react';
-import { bebidas } from '../data/menuData';
+import React, { useEffect, useState } from 'react';
 import bebidaImg from '../../images/bebidas.svg';
 import '../styles/menu.css';
 
-const CafeMenu = ({ lang = 'es' }) => {
+const BebidasMenu = ({ lang = 'es' }) => {
+  const [bebidas, setBebidas] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/menuData')
+      .then(res => res.json())
+      .then(data => setBebidas(data.bebidas || []));
+  }, []);
+
   return (
     <div id="bebidas-id"
       className="min-h-screen p-8 text-amber-400 menu-container centered-div"
@@ -32,4 +39,4 @@ const CafeMenu = ({ lang = 'es' }) => {
   );
 };
 
-export default CafeMenu;
+export default BebidasMenu;

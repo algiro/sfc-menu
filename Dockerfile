@@ -14,6 +14,7 @@ RUN npm install
 COPY . .
 
 # Build the app
+RUN npm install react-router-dom express cors body-parser
 RUN npm run build
 
 # Production stage
