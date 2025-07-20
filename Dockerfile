@@ -13,8 +13,14 @@ RUN npm install
 # Copy project files
 COPY . .
 
+# Install dependencies
+RUN npm install react-router-dom express cors body-parser dotenv
+
+# Create a .env file with build-time arguments
+#ARG SFC_MENU_ADMIN_PWD
+#ENV SFC_MENU_ADMIN_PWD=${SFC_MENU_ADMIN_PWD}
+
 # Build the app
-RUN npm install react-router-dom express cors body-parser
 RUN npm run build
 
 # Production stage

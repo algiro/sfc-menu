@@ -8,6 +8,8 @@ services:
       - "80:80"
     depends_on:
       - backend
+    environment:
+      - VITE_SFC_MENU_ADMIN_PWD=${VITE_SFC_MENU_ADMIN_PWD:-admin123}
     networks:
       - appnet
 
@@ -15,8 +17,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.backend
-    ports:
-      - "3001:3001"
+    expose:
+      - "3001"
+    environment:
+      - VITE_SFC_MENU_ADMIN_PWD=${VITE_SFC_MENU_ADMIN_PWD:-admin123}
     networks:
       - appnet
 

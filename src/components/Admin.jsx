@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AllergenCheckboxes from "./AllergenCheckboxes";
+import { ADMIN_PASSWORD } from "../config";
 
 const SECTIONS = ["cafes", "te", "bebidas", "tostas", "arepas"];
-
-const PASSWORD = "admin123"; // Change for production
 
 const validatePrice = (price) => {
     // Accept format like "1,23" or "12,50"
@@ -44,7 +43,7 @@ function Admin() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if (password === PASSWORD) {
+        if (password === ADMIN_PASSWORD) {
             setAuthenticated(true);
             setMessage("");
         } else {
@@ -53,19 +52,35 @@ function Admin() {
     };
 
     const handleEdit = (idx) => {
+        const entry = entries[idx];
+        let editableEntry = { ...entry };
+
+        // Handle name field based on section type
+        if (section === 'tostas' || section === 'arepas') {
+            // Keep name as a simple string
+            editableEntry = {
+                ...editableEntry,
+                name: entry.name || ''
+            };
+        } else {
+            // Ensure name is an object for other sections
+            if (typeof entry.name === 'string') {
+                editableEntry.name = { es: entry.name, en: entry.name };
+            } else {
+                editableEntry.name = entry.name || { es: '', en: '' };
+            }
+        }
+
         setEditIndex(idx);
-        setEditEntry({ ...entries[idx] });
+        setEditEntry(editableEntry);
     };
 
     const handleChange = (e, key = null) => {
-        const name = key || e.target.name;
-        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        const name = key || (e?.target?.name || null);
+        let value = e;
 
-        if (name === 'price' || name === 'tostaPrice' || name === 'pulgaPrice') {
-            if (value && !validatePrice(value)) {
-                setMessage('Price must be in format "X,XX" (e.g., "1,50")');
-                return;
-            }
+        if (e?.target) {
+            value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         }
 
         setEditEntry(prev => {
@@ -156,36 +171,50 @@ function Admin() {
                     console.error(err);
                 });
         }
-    };
-
-    const handleAddNew = () => {
+    }; const handleAddNew = () => {
         // Create empty entry based on section type
-        const newEntry = {
+        let newEntry = {
             id: getNextId(entries),
-            name: section === 'tostas' || section === 'arepas' ? '' : { es: '', en: '' },
-            price: '',
-            alergenos: section === 'tostas' || section === 'arepas' ? {
-                frutoSecos: false,
-                gluten: false,
-                sesamo: false,
-                huevo: false,
-                lacteos: false,
-                vegan: false
-            } : undefined
+            name: { es: '', en: '' },
+            price: ''
         };
 
+        // Add section-specific fields
         if (section === 'tostas') {
-            newEntry.tostaPrice = '';
-            newEntry.pulgaPrice = '';
-            newEntry.ingredients = { es: '', en: '' };
-        }
-
-        if (section === 'arepas') {
-            newEntry.ingredients = { es: '', en: '' };
+            newEntry = {
+                ...newEntry,
+                tostaPrice: '',
+                pulgaPrice: '',
+                name: '', // tostas use simple name string
+                ingredients: { es: '', en: '' },
+                alergenos: {
+                    frutoSecos: false,
+                    gluten: false,
+                    sesamo: false,
+                    huevo: false,
+                    lacteos: false,
+                    vegan: false
+                }
+            };
+        } else if (section === 'arepas') {
+            newEntry = {
+                ...newEntry,
+                name: '', // arepas use simple name string
+                ingredients: { es: '', en: '' },
+                alergenos: {
+                    frutoSecos: false,
+                    gluten: false,
+                    sesamo: false,
+                    huevo: false,
+                    lacteos: false,
+                    vegan: false
+                }
+            };
         }
 
         setEditEntry(newEntry);
         setEditIndex(-1); // -1 indicates new entry
+        setEntries([...entries, newEntry]);
     };
 
     if (!authenticated) {
@@ -246,14 +275,55 @@ function Admin() {
                                                     <div key={key} style={{ marginBottom: 15 }}>
                                                         <label style={{ display: 'block', marginBottom: 5 }}>Allergens:</label>
                                                         <AllergenCheckboxes
-                                                            alergenos={editEntry.alergenos}
-                                                            onChange={(value) => handleChange({ target: { name: 'alergenos' } }, 'alergenos')}
+                                                            alergenos={editEntry.alergenos || {}}
+                                                            onChange={(value) => handleChange(value, 'alergenos')}
                                                         />
                                                     </div>
                                                 );
                                             }
 
-                                            if (key === 'name' || key === 'ingredients') {
+                                            if (key === 'name') {
+                                                if (section === 'tostas' || section === 'arepas') {
+                                                    return (
+                                                        <div key={key} style={{ marginBottom: 15 }}>
+                                                            <label style={{ display: 'block', marginBottom: 5 }}>{key}:</label>
+                                                            <input
+                                                                name={key}
+                                                                value={editEntry[key] || ''}
+                                                                onChange={handleChange}
+                                                                placeholder={`${key}`}
+                                                                style={{ width: '100%' }}
+                                                            />
+                                                        </div>
+                                                    );
+                                                } else {
+                                                    return (
+                                                        <div key={key} style={{ marginBottom: 15 }}>
+                                                            <label style={{ display: 'block', marginBottom: 5 }}>{key}:</label>
+                                                            <div style={{ display: 'flex', gap: 10 }}>
+                                                                <input
+                                                                    name={key}
+                                                                    data-lang="es"
+                                                                    value={editEntry[key]?.es || ''}
+                                                                    onChange={handleChange}
+                                                                    placeholder={`${key} (ES)`}
+                                                                    style={{ flex: 1 }}
+                                                                />
+                                                                <input
+                                                                    name={key}
+                                                                    data-lang="en"
+                                                                    value={editEntry[key]?.en || ''}
+                                                                    onChange={handleChange}
+                                                                    placeholder={`${key} (EN)`}
+                                                                    style={{ flex: 1 }}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                }
+                                            }
+
+                                            if (key === 'ingredients') {
                                                 return (
                                                     <div key={key} style={{ marginBottom: 15 }}>
                                                         <label style={{ display: 'block', marginBottom: 5 }}>{key}:</label>
@@ -285,7 +355,31 @@ function Admin() {
                                                     <input
                                                         name={key}
                                                         value={editEntry[key] || ''}
-                                                        onChange={handleChange}
+                                                        onChange={(e) => {
+                                                            // Only allow numbers and comma for price fields
+                                                            if ((key === 'price' || key === 'tostaPrice' || key === 'pulgaPrice')) {
+                                                                const value = e.target.value;
+                                                                if (value === '' || /^[\d,]*$/.test(value)) {
+                                                                    handleChange(e);
+                                                                }
+                                                            } else {
+                                                                handleChange(e);
+                                                            }
+                                                        }}
+                                                        onBlur={(e) => {
+                                                            if ((key === 'price' || key === 'tostaPrice' || key === 'pulgaPrice')
+                                                                && e.target.value
+                                                                && !validatePrice(e.target.value)) {
+                                                                setMessage('Price must be in format "X,XX" (e.g., "1,50")');
+                                                                // Reset to previous valid value or empty
+                                                                setEditEntry(prev => ({
+                                                                    ...prev,
+                                                                    [key]: prev[key] || ''
+                                                                }));
+                                                            } else {
+                                                                setMessage('');
+                                                            }
+                                                        }}
                                                         style={{ width: '100%' }}
                                                     />
                                                 </div>

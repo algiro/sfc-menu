@@ -9,7 +9,7 @@ const ALLERGENS = [
     { id: 'vegan', label: 'Vegan' }
 ];
 
-const AllergenCheckboxes = ({ alergenos, onChange }) => {
+const AllergenCheckboxes = ({ alergenos = {}, onChange }) => {
     const handleChange = (allergenId) => {
         const updatedAlergenos = {
             ...alergenos,
