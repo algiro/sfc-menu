@@ -5,10 +5,12 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY src/api ./src/api
-COPY src/data ./src/data
 COPY server.cjs ./
 
 RUN npm install express cors body-parser
+
+# Create directory for external data mount
+RUN mkdir -p /app/data
 
 EXPOSE 3001
 

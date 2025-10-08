@@ -5,6 +5,7 @@ import glutenIcon from '../../images/al_gluten.svg';
 import sesamoIcon from '../../images/al_sesamo.svg';
 import huevoIcon from '../../images/al_huevo.svg';
 import lacteosIcon from '../../images/al_lacteos.svg';
+import sojaIcon from '../../images/al_soja.svg';
 import veganIcon from '../../images/vegan.svg';
 
 const AllergenIcons = ({ alergenos }) => {
@@ -32,6 +33,10 @@ const AllergenIcons = ({ alergenos }) => {
         lacteos: {
             icon: lacteosIcon,
             label: 'Lacteos',
+        },
+        soja: {
+            icon: sojaIcon,
+            label: 'Soja',
         },
         vegan: {
             icon: veganIcon,

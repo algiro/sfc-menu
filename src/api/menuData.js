@@ -3,7 +3,8 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 
-const menuDataPath = path.join(__dirname, '../data/menuData.cjs');
+// Use external volume path for menu data
+const menuDataPath = path.join('/app/data', 'menuData.cjs');
 
 // GET: return all menu data
 router.get('/', (req, res) => {

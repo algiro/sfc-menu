@@ -2,12 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const menuDataApi = require('./src/api/menuData');
+const authApi = require('./src/api/auth');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api/menuData', menuDataApi);
+app.use('/api/auth', authApi);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

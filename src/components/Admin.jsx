@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AllergenCheckboxes from "./AllergenCheckboxes";
-import { ADMIN_PASSWORD } from "../config";
+import { API_BASE_URL } from "../config";
 
 const SECTIONS = ["cafes", "te", "bebidas", "tostas", "arepas"];
 
@@ -24,6 +24,7 @@ function Admin() {
     const [editIndex, setEditIndex] = useState(null);
     const [editEntry, setEditEntry] = useState(null);
     const [message, setMessage] = useState("");
+    const [authToken, setAuthToken] = useState("");
 
     useEffect(() => {
         if (authenticated) {
@@ -41,13 +42,32 @@ function Admin() {
         }
     }, [section, data]);
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        if (password === ADMIN_PASSWORD) {
-            setAuthenticated(true);
-            setMessage("");
-        } else {
-            setMessage("Incorrect password");
+        setMessage("Authenticating...");
+        
+        try {
+            const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ password }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                setAuthenticated(true);
+                setAuthToken(result.token);
+                setMessage("");
+                setPassword(""); // Clear password from state for security
+            } else {
+                setMessage(result.error || "Authentication failed");
+            }
+        } catch (error) {
+            console.error('Authentication error:', error);
+            setMessage("Network error. Please try again.");
         }
     };
 
@@ -86,7 +106,22 @@ function Admin() {
         setEditEntry(prev => {
             if (name === 'alergenos') {
                 return { ...prev, alergenos: value };
-            } else if (name === 'name' || name === 'ingredients') {
+            } else if (name === 'name') {
+                // Handle name field based on section type
+                if (section === 'tostas' || section === 'arepas') {
+                    // For tostas and arepas, name is a simple string
+                    return { ...prev, [name]: value };
+                } else {
+                    // For other sections, name is an object with language keys
+                    return {
+                        ...prev,
+                        [name]: {
+                            ...prev[name],
+                            [e.target.getAttribute('data-lang')]: value
+                        }
+                    };
+                }
+            } else if (name === 'ingredients') {
                 return {
                     ...prev,
                     [name]: {
@@ -112,7 +147,10 @@ function Admin() {
         const newData = { ...data, [section]: updated };
         fetch("/api/menuData", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${authToken}`
+            },
             body: JSON.stringify({ section, entries: updated }),
         })
             .then((res) => res.json())
@@ -134,7 +172,10 @@ function Admin() {
             const newData = { ...data, [section]: updated };
             fetch("/api/menuData", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${authToken}`
+                },
                 body: JSON.stringify({ section, entries: updated }),
             })
                 .then((res) => res.json())
@@ -158,7 +199,10 @@ function Admin() {
             const newData = { ...data, [section]: updated };
             fetch("/api/menuData", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${authToken}`
+                },
                 body: JSON.stringify({ section, entries: updated }),
             })
                 .then((res) => res.json())
@@ -171,21 +215,30 @@ function Admin() {
                     console.error(err);
                 });
         }
-    }; const handleAddNew = () => {
+    };
+
+    const handleLogout = () => {
+        setAuthenticated(false);
+        setAuthToken("");
+        setSection("");
+        setData({});
+        setEntries([]);
+        setEditIndex(null);
+        setEditEntry(null);
+        setMessage("");
+    };
+
+    const handleAddNew = () => {
         // Create empty entry based on section type
-        let newEntry = {
-            id: getNextId(entries),
-            name: { es: '', en: '' },
-            price: ''
-        };
+        let newEntry;
 
         // Add section-specific fields
         if (section === 'tostas') {
             newEntry = {
-                ...newEntry,
+                id: getNextId(entries),
+                name: '', // tostas use simple name string
                 tostaPrice: '',
                 pulgaPrice: '',
-                name: '', // tostas use simple name string
                 ingredients: { es: '', en: '' },
                 alergenos: {
                     frutoSecos: false,
@@ -193,13 +246,15 @@ function Admin() {
                     sesamo: false,
                     huevo: false,
                     lacteos: false,
+                    soja: false,
                     vegan: false
                 }
             };
         } else if (section === 'arepas') {
             newEntry = {
-                ...newEntry,
+                id: getNextId(entries),
                 name: '', // arepas use simple name string
+                price: '',
                 ingredients: { es: '', en: '' },
                 alergenos: {
                     frutoSecos: false,
@@ -207,14 +262,21 @@ function Admin() {
                     sesamo: false,
                     huevo: false,
                     lacteos: false,
+                    soja: false,
                     vegan: false
                 }
+            };
+        } else {
+            // For other sections (cafes, te, bebidas)
+            newEntry = {
+                id: getNextId(entries),
+                name: { es: '', en: '' },
+                price: ''
             };
         }
 
         setEditEntry(newEntry);
         setEditIndex(-1); // -1 indicates new entry
-        setEntries([...entries, newEntry]);
     };
 
     if (!authenticated) {
@@ -243,7 +305,22 @@ function Admin() {
 
     return (
         <div style={{ maxWidth: 800, margin: "auto", padding: 40 }}>
-            <h2>Menu Admin Editor</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+                <h2>Menu Admin Editor</h2>
+                <button 
+                    onClick={handleLogout}
+                    style={{ 
+                        backgroundColor: '#dc3545', 
+                        color: 'white', 
+                        border: 'none', 
+                        padding: '8px 16px', 
+                        borderRadius: '4px',
+                        cursor: 'pointer'
+                    }}
+                >
+                    Logout
+                </button>
+            </div>
             <div>
                 <label>Select section: </label>
                 <select value={section} onChange={(e) => setSection(e.target.value)}>
@@ -265,7 +342,7 @@ function Admin() {
                                 border: '1px solid #ccc',
                                 borderRadius: '4px'
                             }}>
-                                {(editIndex === idx || editIndex === -1 && idx === entries.length) ? (
+                                {editIndex === idx ? (
                                     <div>
                                         {Object.keys(entry).map((key) => {
                                             if (key === 'id') return null;
@@ -443,6 +520,145 @@ function Admin() {
                             </li>
                         ))}
                     </ul>
+                    
+                    {/* New Entry Form */}
+                    {editIndex === -1 && editEntry && (
+                        <div style={{
+                            marginTop: 20,
+                            padding: 15,
+                            border: '2px solid #007bff',
+                            borderRadius: '4px',
+                            backgroundColor: '#f8f9fa'
+                        }}>
+                            <h4>Add New Entry</h4>
+                            {Object.keys(editEntry).map((key) => {
+                                if (key === 'id') return null;
+
+                                if (key === 'alergenos') {
+                                    return (
+                                        <div key={key} style={{ marginBottom: 15 }}>
+                                            <label style={{ display: 'block', marginBottom: 5 }}>Allergens:</label>
+                                            <AllergenCheckboxes
+                                                alergenos={editEntry.alergenos || {}}
+                                                onChange={(value) => handleChange(value, 'alergenos')}
+                                            />
+                                        </div>
+                                    );
+                                }
+
+                                if (key === 'name') {
+                                    if (section === 'tostas' || section === 'arepas') {
+                                        return (
+                                            <div key={key} style={{ marginBottom: 15 }}>
+                                                <label style={{ display: 'block', marginBottom: 5 }}>{key}:</label>
+                                                <input
+                                                    name={key}
+                                                    value={editEntry[key] || ''}
+                                                    onChange={handleChange}
+                                                    placeholder={`${key}`}
+                                                    style={{ width: '100%' }}
+                                                />
+                                            </div>
+                                        );
+                                    } else {
+                                        return (
+                                            <div key={key} style={{ marginBottom: 15 }}>
+                                                <label style={{ display: 'block', marginBottom: 5 }}>{key}:</label>
+                                                <div style={{ display: 'flex', gap: 10 }}>
+                                                    <input
+                                                        name={key}
+                                                        data-lang="es"
+                                                        value={editEntry[key]?.es || ''}
+                                                        onChange={handleChange}
+                                                        placeholder={`${key} (ES)`}
+                                                        style={{ flex: 1 }}
+                                                    />
+                                                    <input
+                                                        name={key}
+                                                        data-lang="en"
+                                                        value={editEntry[key]?.en || ''}
+                                                        onChange={handleChange}
+                                                        placeholder={`${key} (EN)`}
+                                                        style={{ flex: 1 }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        );
+                                    }
+                                }
+
+                                if (key === 'ingredients') {
+                                    return (
+                                        <div key={key} style={{ marginBottom: 15 }}>
+                                            <label style={{ display: 'block', marginBottom: 5 }}>{key}:</label>
+                                            <div style={{ display: 'flex', gap: 10 }}>
+                                                <input
+                                                    name={key}
+                                                    data-lang="es"
+                                                    value={editEntry[key]?.es || ''}
+                                                    onChange={handleChange}
+                                                    placeholder={`${key} (ES)`}
+                                                    style={{ flex: 1 }}
+                                                />
+                                                <input
+                                                    name={key}
+                                                    data-lang="en"
+                                                    value={editEntry[key]?.en || ''}
+                                                    onChange={handleChange}
+                                                    placeholder={`${key} (EN)`}
+                                                    style={{ flex: 1 }}
+                                                />
+                                            </div>
+                                        </div>
+                                    );
+                                }
+
+                                return (
+                                    <div key={key} style={{ marginBottom: 15 }}>
+                                        <label style={{ display: 'block', marginBottom: 5 }}>{key}:</label>
+                                        <input
+                                            name={key}
+                                            value={editEntry[key] || ''}
+                                            onChange={(e) => {
+                                                // Only allow numbers and comma for price fields
+                                                if ((key === 'price' || key === 'tostaPrice' || key === 'pulgaPrice')) {
+                                                    const value = e.target.value;
+                                                    if (value === '' || /^[\d,]*$/.test(value)) {
+                                                        handleChange(e);
+                                                    }
+                                                } else {
+                                                    handleChange(e);
+                                                }
+                                            }}
+                                            onBlur={(e) => {
+                                                if ((key === 'price' || key === 'tostaPrice' || key === 'pulgaPrice')
+                                                    && e.target.value
+                                                    && !validatePrice(e.target.value)) {
+                                                    setMessage('Price must be in format "X,XX" (e.g., "1,50")');
+                                                    // Reset to previous valid value or empty
+                                                    setEditEntry(prev => ({
+                                                        ...prev,
+                                                        [key]: prev[key] || ''
+                                                    }));
+                                                } else {
+                                                    setMessage('');
+                                                }
+                                            }}
+                                            style={{ width: '100%' }}
+                                        />
+                                    </div>
+                                );
+                            })}
+                            <div style={{ display: 'flex', gap: 10, marginTop: 15 }}>
+                                <button onClick={handleSave}>Save</button>
+                                <button onClick={() => {
+                                    setEditIndex(null);
+                                    setEditEntry(null);
+                                    setMessage('');
+                                }}>Cancel</button>
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
             {message && (

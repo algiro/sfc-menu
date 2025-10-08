@@ -67,7 +67,7 @@ const TostasMenu = ({ lang = 'es' }) => {
                 </div>
                 <div className="note-item" style={{ textAlign: 'center' }}>*Aove: Aceite de Oliva Virgen Extra </div>
                 <div className="note-item" style={{ textAlign: 'center' }}>  ●  ●  ●  ●  ●  ● </div>
-                <div className="note-item" style={{ textAlign: 'center' }}>EXTRA PAN SIN GLUTEN + 0,50€</div>
+                <div className="note-item" style={{ textAlign: 'center' }}>EXTRA PAN SIN GLUTEN Pulga 1,65€ / Tosta 0,90€ </div>
             </div>
         </div>
     );

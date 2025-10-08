@@ -6,6 +6,7 @@ const ALLERGENS = [
     { id: 'sesamo', label: 'Sésamo' },
     { id: 'huevo', label: 'Huevo' },
     { id: 'lacteos', label: 'Lácteos' },
+    { id: 'soja', label: 'Soja' },
     { id: 'vegan', label: 'Vegan' }
 ];
 
